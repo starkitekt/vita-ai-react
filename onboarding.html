@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Started — VITA AI</title>
+    <meta name="description" content="Set up your VITA AI account and choose your clinical mode">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="index.html" class="logo">
+                    <div class="logo-mark">V</div>
+                    <span>VITA AI</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Onboarding -->
+    <div class="onboarding">
+        <div class="onboarding-header">
+            <p class="onboarding-step">Step 2 of 4</p>
+            <h2 class="onboarding-title">Choose Your Mode</h2>
+            <p class="onboarding-desc">VITA AI adapts to your clinical workflow</p>
+
+            <div class="progress-track">
+                <div class="progress-step complete"></div>
+                <div class="progress-step active"></div>
+                <div class="progress-step"></div>
+                <div class="progress-step"></div>
+            </div>
+        </div>
+
+        <div class="onboarding-content">
+            <div class="mode-options">
+                <!-- Specialist Mode -->
+                <div class="mode-option selected">
+                    <div class="mode-header">
+                        <div class="mode-icon">
+                            <svg class="icon icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5">
+                                <circle cx="12" cy="12" r="10" />
+                                <circle cx="12" cy="12" r="3" />
+                                <line x1="12" y1="2" x2="12" y2="6" />
+                                <line x1="12" y1="18" x2="12" y2="22" />
+                                <line x1="2" y1="12" x2="6" y2="12" />
+                                <line x1="18" y1="12" x2="22" y2="12" />
+                            </svg>
+                        </div>
+                        <h3 class="mode-title">Specialist Mode</h3>
+                    </div>
+                    <p class="mode-description">
+                        Deep expertise in your specialty with sub-specialty level detail and comprehensive clinical
+                        pathways.
+                    </p>
+                    <ul class="mode-features">
+                        <li>Latest research and guidelines</li>
+                        <li>Complex case reasoning</li>
+                        <li>Specialist-level terminology</li>
+                        <li>Detailed pharmacotherapy</li>
+                    </ul>
+                </div>
+
+                <!-- Primary Care Mode -->
+                <div class="mode-option">
+                    <div class="mode-header">
+                        <div class="mode-icon">
+                            <svg class="icon icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+                                <polyline points="9,22 9,12 15,12 15,22" />
+                            </svg>
+                        </div>
+                        <h3 class="mode-title">Primary Care Mode</h3>
+                    </div>
+                    <p class="mode-description">
+                        Broad coverage for general practice and family medicine with focus on common presentations.
+                    </p>
+                    <ul class="mode-features">
+                        <li>Common conditions focus</li>
+                        <li>Referral guidance</li>
+                        <li>Patient communication tips</li>
+                        <li>Cost-effective options</li>
+                    </ul>
+                </div>
+
+                <!-- Learning Mode -->
+                <div class="mode-option">
+                    <div class="mode-header">
+                        <div class="mode-icon">
+                            <svg class="icon icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5">
+                                <path d="M4 19.5A2.5 2.5 0 016.5 17H20" />
+                                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" />
+                                <path d="M8 7h8" />
+                                <path d="M8 11h8" />
+                                <path d="M8 15h4" />
+                            </svg>
+                        </div>
+                        <h3 class="mode-title">Learning Mode</h3>
+                    </div>
+                    <p class="mode-description">
+                        Educational explanations for medical students and residents with step-by-step learning.
+                    </p>
+                    <ul class="mode-features">
+                        <li>Step-by-step explanations</li>
+                        <li>Pathophysiology included</li>
+                        <li>Clinical pearls</li>
+                        <li>Exam-relevant content</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="onboarding-actions">
+            <a href="index.html" class="skip-link">Skip Onboarding</a>
+
+            <div style="display: flex; gap: var(--space-2);">
+                <button class="btn btn-secondary">
+                    <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <line x1="19" y1="12" x2="5" y2="12" />
+                        <polyline points="12,19 5,12 12,5" />
+                    </svg>
+                    Back
+                </button>
+                <a href="chat.html" class="btn btn-primary">
+                    Next
+                    <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                        <polyline points="12,5 19,12 12,19" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
