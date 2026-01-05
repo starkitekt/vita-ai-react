@@ -122,7 +122,7 @@ const Home = () => {
                                 variants={fadeInUp}
                             >
                                 <div className="feature-icon" aria-hidden="true">
-                                    <svg className="icon icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <svg className="icon icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                                         {feature.icon}
                                     </svg>
                                 </div>

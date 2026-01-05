@@ -20,9 +20,10 @@ const About = () => {
 
     return (
         <div className="about-page">
-            <section className="about-hero" style={{ padding: 'var(--space-20) 0 var(--space-12)', background: 'var(--grey-50)', borderBottom: '1px solid var(--grey-100)' }}>
+            <section className="about-hero" style={{ padding: 'var(--space-20) 0 var(--space-12)', background: 'var(--grey-50)', borderBottom: '1px solid var(--grey-100)' }} aria-labelledby="about-title">
                 <div className="container" style={{ textAlign: 'center' }}>
                     <motion.h1
+                        id="about-title"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         style={{ fontSize: 'var(--text-4xl)', marginBottom: 'var(--space-4)' }}
@@ -64,15 +65,16 @@ const About = () => {
                         <h2>Medical Advisory Board</h2>
                     </div>
 
-                    <div className="advisors-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 'var(--space-8)' }}>
+                    <div className="advisors-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 'var(--space-8)' }} role="list" aria-label="Medical Advisory Board Members">
                         {advisors.map((advisor, idx) => (
                             <motion.article
                                 key={idx}
                                 className="bio-card"
+                                role="listitem"
                                 {...fadeInUp}
                                 style={{ background: 'white', padding: 'var(--space-8)', borderRadius: 'var(--radius-xl)', border: '1px solid var(--grey-100)', display: 'flex', gap: 'var(--space-6)' }}
                             >
-                                <div className="bio-avatar" style={{ flexShrink: 0 }}>
+                                <div className="bio-avatar" style={{ flexShrink: 0 }} aria-hidden="true">
                                     <div style={{ width: '64px', height: '64px', background: 'var(--grey-50)', borderRadius: 'var(--radius-lg)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--grey-400)' }}>
                                         <svg className="icon icon-xl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                                             <circle cx="12" cy="8" r="4" /><path d="M4 20c0-4 4-6 8-6s8 2 8 6" />

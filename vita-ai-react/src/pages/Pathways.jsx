@@ -41,12 +41,14 @@ const Pathways = () => {
                 </div>
             </section>
 
-            <nav className="category-tabs" style={{ display: 'flex', justifyContent: 'center', gap: 'var(--space-2)', padding: 'var(--space-6) 0', borderBottom: '1px solid var(--grey-100)', sticky: 'top', background: 'white', zIndex: 10 }}>
+            <nav className="category-tabs" style={{ display: 'flex', justifyContent: 'center', gap: 'var(--space-2)', padding: 'var(--space-6) 0', borderBottom: '1px solid var(--grey-100)', position: 'sticky', top: '72px', background: 'white', zIndex: 10 }} aria-label="Pathway Categories">
                 {categories.map(cat => (
                     <button
                         key={cat}
                         className={`category-tab ${activeCategory === cat ? 'active' : ''}`}
                         onClick={() => setActiveCategory(cat)}
+                        aria-pressed={activeCategory === cat}
+                        role="tab"
                         style={{
                             padding: 'var(--space-2) var(--space-4)',
                             fontSize: 'var(--text-xs)',
@@ -70,11 +72,14 @@ const Pathways = () => {
                         className="pathways-grid"
                         layout
                         style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 'var(--space-5)' }}
+                        role="list"
+                        aria-label="Filtered Clinical Pathways"
                     >
                         <AnimatePresence>
                             {filteredPathways.map((pathway, idx) => (
                                 <motion.article
                                     key={pathway.title}
+                                    role="listitem"
                                     layout
                                     initial={{ opacity: 0, scale: 0.9 }}
                                     animate={{ opacity: 1, scale: 1 }}
