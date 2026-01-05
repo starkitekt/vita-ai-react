@@ -80,15 +80,68 @@
   --shadow-xl: 0 16px 32px rgba(0, 0, 0, 0.10);
   --shadow-glow: 0 0 20px rgba(0, 0, 0, 0.05);
 
-  /* Motion - Precise & Purposeful */
+  /* ==========================================================================
+     ORGANIC MOTION SYSTEM - Framer Motion-Inspired Bezier Curves
+     Natural, spring-like animations that feel alive
+     ========================================================================== */
+
+  /* Core Easing Functions - Organic Feel */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  /* Fast start, gentle stop */
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  /* Smooth in-out */
   --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  /* Bouncy overshoot */
+  --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  /* Elastic bounce */
+
+  /* Organic Fluid Motion - Like Breathing */
+  --ease-organic-in: cubic-bezier(0.4, 0, 0.2, 1);
+  /* Material-style */
+  --ease-organic-out: cubic-bezier(0, 0, 0.2, 1);
+  /* Decelerating fade */
+  --ease-organic-inout: cubic-bezier(0.42, 0, 0.58, 1);
+  /* Symmetric smooth */
+
+  /* Spring-Like Physics */
+  --ease-spring-soft: cubic-bezier(0.25, 1.4, 0.55, 1);
+  /* Gentle overshoot */
+  --ease-spring-medium: cubic-bezier(0.34, 1.56, 0.64, 1);
+  /* Standard spring */
+  --ease-spring-hard: cubic-bezier(0.22, 1.8, 0.36, 1);
+  /* Strong overshoot */
+
+  /* Anticipation & Overshoot */
+  --ease-anticipate: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  /* Pulls back then springs */
+  --ease-overshoot: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  /* Classic overshoot */
+
+  /* Natural Deceleration (Like Objects Coming to Rest) */
+  --ease-decel: cubic-bezier(0.0, 0.0, 0.2, 1);
+  /* Fast in, smooth stop */
+  --ease-accel: cubic-bezier(0.4, 0.0, 1, 1);
+  /* Slow start, fast end */
+  --ease-smooth: cubic-bezier(0.4, 0.0, 0.6, 1);
+  /* Subtle acceleration */
+
+  /* Duration Scale - Thoughtful Timing */
   --duration-instant: 100ms;
+  /* Micro-interactions */
   --duration-fast: 150ms;
+  /* Button states */
   --duration-normal: 250ms;
-  --duration-slow: 400ms;
+  /* Standard transitions */
+  --duration-medium: 350ms;
+  /* Modal/dropdown appear */
+  --duration-slow: 500ms;
+  /* Page transitions */
+  --duration-slower: 700ms;
+  /* Complex animations */
   --duration-wave: 2s;
+  /* Ambient effects */
+  --duration-breathe: 4s;
+  /* Subtle ambient */
 }
 
 /* ==========================================================================
@@ -3742,4 +3795,341 @@ p {
 .apply-pathway-btn svg {
   width: 14px;
   height: 14px;
+}
+
+/* ==========================================================================
+   ORGANIC ANIMATION KEYFRAMES - Framer Motion-Inspired
+   Natural, spring-like animations that feel alive
+   ========================================================================== */
+
+/* Spring-In - Enter with subtle overshoot */
+@keyframes spring-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.9) translateY(8px);
+  }
+
+  60% {
+    opacity: 1;
+    transform: scale(1.02) translateY(-2px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Spring-Scale - For buttons and interactive elements */
+@keyframes spring-scale {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(0.95);
+  }
+
+  75% {
+    transform: scale(1.03);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Breathe-Glow - Subtle ambient animation */
+@keyframes breathe-glow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+
+  50% {
+    box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.05);
+  }
+}
+
+/* Slide-Up with Spring - For modals and dropdowns */
+@keyframes slide-up-spring {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translateY(-4px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fade-Scale-In - For cards and content */
+@keyframes fade-scale-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Bounce-Subtle - For feedback states */
+@keyframes bounce-subtle {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  25% {
+    transform: translateY(-3px);
+  }
+
+  50% {
+    transform: translateY(0);
+  }
+
+  75% {
+    transform: translateY(-1px);
+  }
+}
+
+/* Pulse-Soft - For status indicators */
+@keyframes pulse-soft {
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+/* Shake-Gentle - For error states */
+@keyframes shake-gentle {
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  20% {
+    transform: translateX(-3px);
+  }
+
+  40% {
+    transform: translateX(3px);
+  }
+
+  60% {
+    transform: translateX(-2px);
+  }
+
+  80% {
+    transform: translateX(2px);
+  }
+}
+
+/* ==========================================================================
+   ORGANIC ANIMATION UTILITY CLASSES
+   ========================================================================== */
+
+.animate-spring-in {
+  animation: spring-in var(--duration-medium) var(--ease-spring-soft) forwards;
+}
+
+.animate-slide-up {
+  animation: slide-up-spring var(--duration-medium) var(--ease-spring-soft) forwards;
+}
+
+.animate-fade-scale {
+  animation: fade-scale-in var(--duration-normal) var(--ease-organic-out) forwards;
+}
+
+.animate-breathe {
+  animation: breathe-glow var(--duration-breathe) var(--ease-organic-inout) infinite;
+}
+
+.animate-pulse {
+  animation: pulse-soft 2s var(--ease-organic-inout) infinite;
+}
+
+/* ==========================================================================
+   APPLY ORGANIC MOTION TO UI ELEMENTS
+   ========================================================================== */
+
+/* Buttons - Spring click feedback */
+.btn {
+  transition: all var(--duration-fast) var(--ease-spring-soft);
+}
+
+.btn:active {
+  transform: scale(0.97);
+  transition: transform var(--duration-instant) var(--ease-spring-hard);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  transition: all var(--duration-fast) var(--ease-spring-soft);
+}
+
+/* Cards - Organic lift on hover */
+.feature-card,
+.pathway-card,
+.mode-card {
+  transition: all var(--duration-normal) var(--ease-organic-out);
+}
+
+.feature-card:hover,
+.pathway-card:hover,
+.mode-card:hover {
+  transform: translateY(-4px);
+  transition: all var(--duration-fast) var(--ease-spring-soft);
+}
+
+/* Modal/Dropdown Enter - Spring up */
+.modal-overlay.active .modal,
+.mode-dropdown.active {
+  animation: slide-up-spring var(--duration-medium) var(--ease-spring-soft) forwards;
+}
+
+/* Message Enter - Fade and scale */
+.message {
+  animation: fade-scale-in var(--duration-normal) var(--ease-organic-out) forwards;
+}
+
+/* Source Cards - Staggered spring entrance */
+.source-card {
+  animation: spring-in var(--duration-medium) var(--ease-spring-soft) forwards;
+  animation-fill-mode: both;
+}
+
+/* Feedback Toast - Slide up with spring */
+.feedback-toast.visible {
+  animation: slide-up-spring var(--duration-medium) var(--ease-spring-medium) forwards;
+}
+
+/* Input Focus - Subtle glow */
+.chat-input:focus,
+.search-input:focus {
+  transition: all var(--duration-fast) var(--ease-organic-out);
+}
+
+/* Sidebar Collapse - Smooth organic transition */
+.sidebar {
+  transition: width var(--duration-medium) var(--ease-organic-inout);
+}
+
+/* Patient Cards - Spring on hover */
+.patient-card {
+  transition: all var(--duration-fast) var(--ease-organic-out);
+}
+
+.patient-card:hover {
+  transform: translateX(4px);
+  transition: all var(--duration-fast) var(--ease-spring-soft);
+}
+
+/* Quick Links - Organic slide */
+.quick-link {
+  transition: all var(--duration-fast) var(--ease-organic-out);
+}
+
+.quick-link:hover {
+  transform: translateX(4px);
+  transition: all var(--duration-fast) var(--ease-spring-soft);
+}
+
+/* Pathways Quick Items - Natural feedback */
+.pathways-quick-item {
+  transition: all var(--duration-fast) var(--ease-organic-out);
+}
+
+.pathways-quick-item:hover {
+  transform: translateX(4px) scale(1.01);
+  transition: all var(--duration-fast) var(--ease-spring-soft);
+}
+
+/* Action Buttons - Bouncy feedback */
+.action-btn {
+  transition: all var(--duration-fast) var(--ease-organic-out);
+}
+
+.action-btn:hover {
+  transform: translateY(-2px);
+  transition: all var(--duration-fast) var(--ease-spring-soft);
+}
+
+.action-btn:active {
+  transform: scale(0.95);
+  transition: all var(--duration-instant) var(--ease-spring-hard);
+}
+
+/* Feedback Buttons - Spring toggle */
+.feedback-btn {
+  transition: all var(--duration-fast) var(--ease-organic-out);
+}
+
+.feedback-btn:hover {
+  transform: scale(1.1);
+  transition: all var(--duration-fast) var(--ease-spring-soft);
+}
+
+.feedback-btn:active {
+  transform: scale(0.9);
+  transition: all var(--duration-instant) var(--ease-spring-hard);
+}
+
+.feedback-btn.active {
+  animation: bounce-subtle var(--duration-slow) var(--ease-spring-medium);
+}
+
+/* Mode Options - Natural selection feedback */
+.mode-option {
+  transition: all var(--duration-fast) var(--ease-organic-out);
+}
+
+.mode-option:hover {
+  transform: translateX(4px);
+  transition: all var(--duration-fast) var(--ease-spring-soft);
+}
+
+/* Toggle Switch - Smooth organic flip */
+.toggle-switch {
+  transition: background var(--duration-fast) var(--ease-organic-inout);
+}
+
+.toggle-switch::after {
+  transition: transform var(--duration-fast) var(--ease-spring-medium);
+}
+
+/* Connection Dot - Subtle pulse */
+.connection-dot.online {
+  animation: pulse-soft 2s var(--ease-organic-inout) infinite;
+}
+
+/* Reduced Motion - Respect user preferences */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
