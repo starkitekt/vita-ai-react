@@ -1,0 +1,49 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Docker files (don't need to copy themselves)
+Dockerfile
+docker-compose*.yml
+.dockerignore
+
+# Documentation
+*.md
+README*
+LICENSE
+CHANGELOG
+
+# Development
+.vscode
+.idea
+*.log
+*.tmp
+.env*
+.editorconfig
+
+# OS files
+.DS_Store
+Thumbs.db
+*.swp
+
+# Node modules (if any future JS)
+node_modules
+npm-debug.log
+yarn-error.log
+
+# Build artifacts
+dist
+build
+.cache
+
+# Test files
+*.test.*
+*.spec.*
+__tests__
+coverage
+
+# Temporary files
+tmp
+temp
+*.bak

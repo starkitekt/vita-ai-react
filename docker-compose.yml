@@ -1,0 +1,63 @@
+version: '3.8'
+
+services:
+  # VITA AI Web Application
+  vita-ai:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: vita-ai-app
+    ports:
+      - "80:80"
+    restart: unless-stopped
+    healthcheck:
+      test: [ "CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost/health" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    environment:
+      - NODE_ENV=production
+    read_only: true
+    tmpfs:
+      - /var/cache/nginx
+      - /var/run
+    security_opt:
+      - no-new-privileges:true
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 128M
+    labels:
+      - "app=vita-ai"
+      - "version=1.0.0"
+
+  # Redis for caching (optional, for future features)
+  redis:
+    image: redis:alpine
+    container_name: vita-ai-redis
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
+    command: redis-server --appendonly yes --maxmemory 256mb --maxmemory-policy allkeys-lru
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    profiles:
+      - with-cache
+
+volumes:
+  redis_data:
+
+
+networks:
+  default:
+    name: vita-ai-network
