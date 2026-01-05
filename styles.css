@@ -3523,3 +3523,223 @@ p {
   color: var(--grey-400);
   margin-top: var(--space-2);
 }
+
+/* ==========================================================================
+   MODE SELECTOR - 3 Clinical Modes
+   ========================================================================== */
+
+.mode-selector {
+  position: relative;
+}
+
+.mode-badge {
+  cursor: pointer;
+}
+
+.mode-dropdown {
+  position: absolute;
+  top: calc(100% + var(--space-2));
+  left: 0;
+  min-width: 280px;
+  background: var(--white);
+  border: 1px solid var(--grey-200);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: all var(--duration-fast) var(--ease-out);
+  z-index: 100;
+}
+
+.mode-dropdown.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.mode-dropdown-header {
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--grey-100);
+}
+
+.mode-dropdown-title {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--grey-400);
+}
+
+.mode-option {
+  padding: var(--space-4);
+  border-bottom: 1px solid var(--grey-100);
+  cursor: pointer;
+  transition: background var(--duration-fast);
+}
+
+.mode-option:last-child {
+  border-bottom: none;
+}
+
+.mode-option:hover {
+  background: var(--grey-50);
+}
+
+.mode-option.selected {
+  background: var(--grey-100);
+}
+
+.mode-option-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-1);
+}
+
+.mode-option-icon {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-base);
+}
+
+.mode-option-title {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--grey-800);
+}
+
+.mode-option-check {
+  margin-left: auto;
+  width: 16px;
+  height: 16px;
+  color: var(--grey-900);
+  display: none;
+}
+
+.mode-option.selected .mode-option-check {
+  display: block;
+}
+
+.mode-option-desc {
+  font-size: var(--text-xs);
+  color: var(--grey-500);
+  padding-left: 28px;
+}
+
+.mode-option-features {
+  padding-left: 28px;
+  margin-top: var(--space-2);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+}
+
+.mode-feature-chip {
+  padding: 2px var(--space-2);
+  background: var(--grey-100);
+  border-radius: var(--radius-full);
+  font-size: var(--text-2xs);
+  color: var(--grey-600);
+}
+
+/* Pathways Quick Access */
+.pathways-quick-access {
+  padding: var(--space-4);
+  margin: var(--space-4);
+  background: linear-gradient(135deg, var(--grey-100) 0%, var(--grey-50) 100%);
+  border: 1px solid var(--grey-200);
+  border-radius: var(--radius-lg);
+}
+
+.pathways-quick-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+.pathways-quick-icon {
+  width: 20px;
+  height: 20px;
+  color: var(--grey-600);
+}
+
+.pathways-quick-title {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--grey-800);
+}
+
+.pathways-quick-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.pathways-quick-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  background: var(--white);
+  border: 1px solid var(--grey-200);
+  border-radius: var(--radius-md);
+  font-size: var(--text-xs);
+  color: var(--grey-700);
+  text-decoration: none;
+  transition: all var(--duration-fast);
+}
+
+.pathways-quick-item:hover {
+  border-color: var(--grey-400);
+  background: var(--grey-50);
+}
+
+.pathways-quick-item svg {
+  width: 14px;
+  height: 14px;
+  color: var(--grey-400);
+}
+
+.pathways-quick-item .offline-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--grey-400);
+  border-radius: 50%;
+  margin-left: auto;
+}
+
+.pathways-quick-item .offline-dot.available {
+  background: #22c55e;
+}
+
+/* Apply Pathway Button */
+.apply-pathway-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  background: var(--grey-900);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--duration-fast);
+}
+
+.apply-pathway-btn:hover {
+  background: var(--black);
+  transform: translateY(-1px);
+}
+
+.apply-pathway-btn svg {
+  width: 14px;
+  height: 14px;
+}

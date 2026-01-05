@@ -207,6 +207,40 @@
                 </div>
             </div>
 
+            <!-- Pathways Quick Access -->
+            <div class="pathways-quick-access">
+                <div class="pathways-quick-header">
+                    <svg class="pathways-quick-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.5">
+                        <path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z" />
+                        <path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z" />
+                    </svg>
+                    <span class="pathways-quick-title">Relevant Pathways</span>
+                </div>
+                <div class="pathways-quick-list">
+                    <a href="pathways.html#t2dm" class="pathways-quick-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2" />
+                            <rect x="9" y="3" width="6" height="4" rx="1" />
+                            <path d="M9 14l2 2 4-4" />
+                        </svg>
+                        T2DM Management (ADA 2024)
+                        <span class="offline-dot available"></span>
+                    </a>
+                    <a href="pathways.html#cvd" class="pathways-quick-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path
+                                d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
+                        </svg>
+                        CVD Risk in Diabetes
+                        <span class="offline-dot available"></span>
+                    </a>
+                    <a href="pathways.html" class="pathways-quick-item">
+                        Browse all 25+ pathways →
+                    </a>
+                </div>
+            </div>
+
             <!-- Quick Links -->
             <div class="quick-links">
                 <a href="pathways.html" class="quick-link">
@@ -240,9 +274,74 @@
             <!-- Status Bar -->
             <div class="status-bar">
                 <div class="status-left">
-                    <div class="mode-badge">
-                        <div class="mode-dot active"></div>
-                        <span>Specialist • Cardiology</span>
+                    <div class="mode-selector">
+                        <div class="mode-badge"
+                            onclick="document.getElementById('modeDropdown').classList.toggle('active')">
+                            <div class="mode-dot active"></div>
+                            <span>🎯 Specialist • Cardiology</span>
+                            <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5" style="margin-left: 4px;">
+                                <polyline points="6,9 12,15 18,9" />
+                            </svg>
+                        </div>
+
+                        <!-- Mode Dropdown -->
+                        <div class="mode-dropdown" id="modeDropdown">
+                            <div class="mode-dropdown-header">
+                                <div class="mode-dropdown-title">Select Clinical Mode</div>
+                            </div>
+
+                            <div class="mode-option selected" onclick="selectMode(this, 'Specialist')">
+                                <div class="mode-option-header">
+                                    <span class="mode-option-icon">🎯</span>
+                                    <span class="mode-option-title">Specialist</span>
+                                    <svg class="mode-option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <polyline points="20,6 9,17 4,12" />
+                                    </svg>
+                                </div>
+                                <div class="mode-option-desc">Deep expertise in your specialty</div>
+                                <div class="mode-option-features">
+                                    <span class="mode-feature-chip">Sub-specialty detail</span>
+                                    <span class="mode-feature-chip">Latest research</span>
+                                    <span class="mode-feature-chip">Complex cases</span>
+                                </div>
+                            </div>
+
+                            <div class="mode-option" onclick="selectMode(this, 'Primary Care')">
+                                <div class="mode-option-header">
+                                    <span class="mode-option-icon">🏥</span>
+                                    <span class="mode-option-title">Primary Care</span>
+                                    <svg class="mode-option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <polyline points="20,6 9,17 4,12" />
+                                    </svg>
+                                </div>
+                                <div class="mode-option-desc">Broad coverage for general practice</div>
+                                <div class="mode-option-features">
+                                    <span class="mode-feature-chip">Common conditions</span>
+                                    <span class="mode-feature-chip">Referral guidance</span>
+                                    <span class="mode-feature-chip">Preventive care</span>
+                                </div>
+                            </div>
+
+                            <div class="mode-option" onclick="selectMode(this, 'Learning')">
+                                <div class="mode-option-header">
+                                    <span class="mode-option-icon">📚</span>
+                                    <span class="mode-option-title">Learning</span>
+                                    <svg class="mode-option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <polyline points="20,6 9,17 4,12" />
+                                    </svg>
+                                </div>
+                                <div class="mode-option-desc">Educational explanations for students & residents</div>
+                                <div class="mode-option-features">
+                                    <span class="mode-feature-chip">Step-by-step</span>
+                                    <span class="mode-feature-chip">Mnemonics</span>
+                                    <span class="mode-feature-chip">Pathophysiology</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="patient-context">
@@ -767,6 +866,34 @@
                 toast.classList.remove('visible');
             }, 3000);
         }
+
+        // Mode selector functionality
+        function selectMode(element, modeName) {
+            // Remove selected from all options
+            document.querySelectorAll('.mode-option').forEach(opt => opt.classList.remove('selected'));
+            // Add selected to clicked option
+            element.classList.add('selected');
+
+            // Update mode badge text
+            const icons = { 'Specialist': '🎯', 'Primary Care': '🏥', 'Learning': '📚' };
+            const modeText = document.querySelector('.mode-badge span');
+            modeText.textContent = `${icons[modeName]} ${modeName}`;
+
+            // Close dropdown
+            document.getElementById('modeDropdown').classList.remove('active');
+
+            // Show feedback
+            showFeedbackToast();
+        }
+
+        // Close mode dropdown when clicking outside
+        document.addEventListener('click', function (e) {
+            const dropdown = document.getElementById('modeDropdown');
+            const modeSelector = document.querySelector('.mode-selector');
+            if (dropdown && !modeSelector.contains(e.target)) {
+                dropdown.classList.remove('active');
+            }
+        });
     </script>
 </body>
 
