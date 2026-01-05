@@ -39,6 +39,25 @@ const ChatMessage = memo(({ role, content, metrics }) => {
                 <div className="message-text" style={{ lineHeight: '1.6' }}>
                     {content}
                 </div>
+
+                {isAI && (
+                    <div className="trust-loop" style={{ display: 'flex', gap: 'var(--space-2)', marginTop: 'var(--space-4)', borderTop: '1px solid var(--grey-100)', paddingTop: 'var(--space-4)' }}>
+                        <button
+                            className="btn btn-xs feedback-btn"
+                            style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-1.5)', padding: 'var(--space-1) var(--space-2)', background: 'transparent', border: '1px solid var(--grey-100)', borderRadius: 'var(--radius-md)', fontSize: '10px', color: 'var(--grey-500)', cursor: 'pointer' }}
+                            title="This recommendation aligns with my clinical experience"
+                        >
+                            <span>👍</span> Verified
+                        </button>
+                        <button
+                            className="btn btn-xs feedback-btn"
+                            style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-1.5)', padding: 'var(--space-1) var(--space-2)', background: 'transparent', border: '1px solid var(--grey-100)', borderRadius: 'var(--radius-md)', fontSize: '10px', color: 'var(--grey-500)', cursor: 'pointer' }}
+                            title="This information seems outdated or inaccurate"
+                        >
+                            <span>👎</span> Outdated
+                        </button>
+                    </div>
+                )}
             </div>
         </motion.div>
     );
