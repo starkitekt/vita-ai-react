@@ -17,7 +17,10 @@ const MAX_FILE_SIZES = {
 const ChatInput = memo(({ onSend }) => {
     const [value, setValue] = useState('');
     const [attachments, setAttachments] = useState([]);
+    const [isDragging, setIsDragging] = useState(false);
+    const [uploadProgress, setUploadProgress] = useState({});
     const fileInputRef = useRef(null);
+    const inputRef = useRef(null);
 
     const validateFile = (file) => {
         const fileType = file.type.split('/')[0];
@@ -73,11 +76,103 @@ const ChatInput = memo(({ onSend }) => {
             onSend({ text: value, attachments });
             setValue('');
             setAttachments([]);
+            setUploadProgress({});
+        }
+    };
+
+    // Drag and Drop Handlers
+    const handleDragOver = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        setIsDragging(true);
+    };
+
+    const handleDragLeave = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        setIsDragging(false);
+    };
+
+    const handleDrop = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        setIsDragging(false);
+
+        const files = Array.from(e.dataTransfer.files);
+        const validFiles = files.filter(validateFile);
+
+        validFiles.forEach(file => {
+            if (file.type.startsWith('image/')) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    setAttachments(prev => [...prev, { ...file, preview: e.target.result }]);
+                };
+                reader.readAsDataURL(file);
+            } else {
+                setAttachments(prev => [...prev, file]);
+            }
+        });
+    };
+
+    // Paste Handler
+    const handlePaste = (e) => {
+        const items = e.clipboardData?.items;
+        if (!items) return;
+
+        for (let item of items) {
+            if (item.type.indexOf('image') !== -1) {
+                const file = item.getAsFile();
+                if (file && validateFile(file)) {
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        setAttachments(prev => [...prev, { ...file, preview: e.target.result }]);
+                    };
+                    reader.readAsDataURL(file);
+                }
+            }
         }
     };
 
     return (
-        <div className="input-area" style={{ borderTop: '1px solid var(--grey-100)', background: 'white' }}>
+        <div
+            className="input-area"
+            style={{ borderTop: '1px solid var(--grey-100)', background: 'white', position: 'relative' }}
+            onDragOver={handleDragOver}
+            onDragLeave={handleDragLeave}
+            onDrop={handleDrop}
+        >
+            {/* Drag and Drop Overlay */}
+            {isDragging && (
+                <div style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    background: 'rgba(0, 0, 0, 0.05)',
+                    border: '2px dashed var(--grey-400)',
+                    borderRadius: 'var(--radius-lg)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    zIndex: 10,
+                    pointerEvents: 'none'
+                }}>
+                    <div style={{
+                        textAlign: 'center',
+                        color: 'var(--grey-600)',
+                        fontSize: 'var(--text-base)',
+                        fontWeight: '600'
+                    }}>
+                        <div style={{ fontSize: '48px', marginBottom: 'var(--space-2)' }}>📎</div>
+                        <div>Drop files here</div>
+                        <div style={{ fontSize: 'var(--text-xs)', color: 'var(--grey-400)', marginTop: 'var(--space-1)' }}>
+                            Images, Videos, or Audio
+                        </div>
+                    </div>
+                </div>
+            )}
+
             <AttachmentPreview attachments={attachments} onRemove={removeAttachment} />
 
             <div style={{ padding: 'var(--space-6)' }}>
