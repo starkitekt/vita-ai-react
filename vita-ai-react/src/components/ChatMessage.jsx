@@ -1,8 +1,24 @@
-import React, { memo } from 'react';
+import React, { memo, useState } from 'react';
 import { motion } from 'framer-motion';
+import MediaDisplay from './MediaDisplay';
+import ImageLightbox from './ImageLightbox';
 
-const ChatMessage = memo(({ role, content, metrics, sources, thoughtProcess }) => {
+const ChatMessage = memo(({ role, content, metrics, sources, thoughtProcess, attachments }) => {
     const isAI = role === 'ai';
+    const [lightboxImages, setLightboxImages] = useState(null);
+    const [lightboxIndex, setLightboxIndex] = useState(0);
+
+    const handleLightboxOpen = (imageSrc) => {
+        const imageAttachments = attachments?.filter(att => att.type?.startsWith('image/')) || [];
+        const images = imageAttachments.map(att => att.preview || att.url || URL.createObjectURL(att));
+        const index = images.findIndex(img => img === imageSrc);
+        setLightboxImages(images);
+        setLightboxIndex(index >= 0 ? index : 0);
+    };
+
+    const handleLightboxClose = () => {
+        setLightboxImages(null);
+    };
 
     return (
         <motion.div
@@ -156,6 +172,36 @@ const ChatMessage = memo(({ role, content, metrics, sources, thoughtProcess }) =
                     </div>
                 )}
             </div>
+
+            {/* Media Attachments */}
+            {attachments && attachments.length > 0 && (
+                <div className="message-attachments" style={{ marginTop: 'var(--space-4)' }}>
+                    {attachments.map((attachment, idx) => {
+                        const fileType = attachment.type?.split('/')[0];
+                        const src = attachment.preview || attachment.url || URL.createObjectURL(attachment);
+
+                        return (
+                            <MediaDisplay
+                                key={idx}
+                                type={fileType}
+                                src={src}
+                                thumbnail={attachment.thumbnail}
+                                fileName={attachment.name}
+                                onLightboxOpen={handleLightboxOpen}
+                            />
+                        );
+                    })}
+                </div>
+            )}
+
+            {/* Image Lightbox */}
+            {lightboxImages && (
+                <ImageLightbox
+                    images={lightboxImages}
+                    currentIndex={lightboxIndex}
+                    onClose={handleLightboxClose}
+                />
+            )}
         </motion.div>
     );
 });
