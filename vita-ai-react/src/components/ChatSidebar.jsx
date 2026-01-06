@@ -106,6 +106,25 @@ const ChatSidebar = memo(({ collapsed, onToggle }) => {
                 </div>
             )}
 
+            {!collapsed && (
+                <div className="sidebar-footer" style={{ position: 'absolute', bottom: '56px', left: 0, width: '100%', padding: 'var(--space-3) var(--space-4)', borderTop: '1px solid var(--grey-100)', background: 'white' }}>
+                    <a href="/pathways" className="footer-link" style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)', padding: 'var(--space-2)', fontSize: 'var(--text-xs)', color: 'var(--grey-600)', textDecoration: 'none', borderRadius: 'var(--radius-md)', transition: 'background 0.2s', marginBottom: 'var(--space-2)' }}>
+                        <svg className="icon icon-xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" style={{ width: '14px' }}>
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                        </svg>
+                        <span>Clinical Pathways</span>
+                    </a>
+                    <a href="/about" className="footer-link" style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)', padding: 'var(--space-2)', fontSize: 'var(--text-xs)', color: 'var(--grey-600)', textDecoration: 'none', borderRadius: 'var(--radius-md)', transition: 'background 0.2s' }}>
+                        <svg className="icon icon-xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" style={{ width: '14px' }}>
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M12 16v-4" />
+                            <path d="M12 8h.01" />
+                        </svg>
+                        <span>About VITA AI</span>
+                    </a>
+                </div>
+            )}
+
             <button
                 className="collapse-btn"
                 onClick={onToggle}

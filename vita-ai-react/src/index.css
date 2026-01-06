@@ -7,30 +7,30 @@
 
 /* Accessibility Helpers */
 .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border-width: 0;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
 
 .skip-link {
-    position: absolute;
-    top: -40px;
-    left: 0;
-    background: var(--brand-500);
-    color: white;
-    padding: 8px;
-    z-index: 1000;
-    transition: top 0.2s;
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--brand-500);
+  color: white;
+  padding: 8px;
+  z-index: 1000;
+  transition: top 0.2s;
 }
 
 .skip-link:focus {
-    top: 0;
+  top: 0;
 }
 
 /* Base Styles */
@@ -91,6 +91,36 @@
   --space-16: 4rem;
   --space-20: 5rem;
   --space-24: 6rem;
+
+  /* ==========================================================================
+     RESPONSIVE DESIGN SYSTEM - Device-Agnostic Tokens
+     Mobile-first approach with progressive enhancement
+     ========================================================================== */
+
+  /* Breakpoint Definitions */
+  --breakpoint-mobile: 320px;
+  --breakpoint-mobile-lg: 480px;
+  --breakpoint-tablet: 768px;
+  --breakpoint-tablet-lg: 1024px;
+  --breakpoint-desktop: 1280px;
+  --breakpoint-desktop-lg: 1536px;
+  --breakpoint-desktop-xl: 1920px;
+
+  /* Responsive Spacing Tokens (Mobile Base) */
+  --space-responsive-1: 0.25rem;
+  --space-responsive-2: 0.5rem;
+  --space-responsive-3: 0.75rem;
+  --space-responsive-4: 1rem;
+  --space-responsive-6: 1.5rem;
+  --space-responsive-8: 2rem;
+
+  /* Component-Specific Responsive Tokens */
+  --sidebar-width: 280px;
+  --sidebar-width-collapsed: 64px;
+  --header-height: 64px;
+  --chat-bubble-max-width: 100%;
+  --input-height: 48px;
+
 
   /* Refined Border Radius */
   --radius-xs: 3px;

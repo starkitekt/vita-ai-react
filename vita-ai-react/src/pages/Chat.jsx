@@ -99,7 +99,6 @@ const Chat = () => {
                                 <svg className="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8" /><polyline points="16 6 12 2 8 6" /><line x1="12" y1="2" x2="12" y2="15" /></svg>
                             </button>
                         </div>
-                        <a href="/pathways" className="btn btn-ghost" style={{ fontSize: 'var(--text-xs)', fontWeight: '600', color: 'var(--grey-600)' }}>View Pathways</a>
                     </div>
 
                     <AnimatePresence>
@@ -126,6 +125,47 @@ const Chat = () => {
                     <ChatMessage
                         role="ai"
                         metrics={{ confidence: 94 }}
+                        sources={[
+                            {
+                                citation: 'ADA 2024, Section 9.2 - Pharmacologic Approaches to Glycemic Treatment',
+                                trustScore: 98,
+                                evidenceLevel: 'Level I',
+                                url: 'https://diabetesjournals.org/care/article/47/Supplement_1/S158/153961/9-Pharmacologic-Approaches-to-Glycemic-Treatment'
+                            },
+                            {
+                                citation: 'EMPA-REG OUTCOME Trial - CV Mortality Benefit',
+                                trustScore: 96,
+                                evidenceLevel: 'Level I',
+                                url: 'https://www.nejm.org/doi/full/10.1056/NEJMoa1504720'
+                            },
+                            {
+                                citation: 'RSSDI Clinical Practice Guidelines 2024',
+                                trustScore: 92,
+                                evidenceLevel: 'Level II'
+                            }
+                        ]}
+                        thoughtProcess={[
+                            {
+                                title: 'Patient Assessment',
+                                description: '55-year-old with T2DM, HbA1c 9.5%, established CVD history. Requires aggressive glycemic control with cardiovascular protection.',
+                                sources: ['Clinical Intake', 'Patient History']
+                            },
+                            {
+                                title: 'Guideline Review',
+                                description: 'ADA 2024 recommends dual therapy initiation for HbA1c >9%. First-line: Metformin + agent with proven CV benefit.',
+                                sources: ['ADA 2024 Fig 9.2']
+                            },
+                            {
+                                title: 'CV Risk Mitigation Strategy',
+                                description: 'SGLT2 inhibitors demonstrate significant CV mortality reduction in patients with established CVD (EMPA-REG: 38% reduction in CV death).',
+                                sources: ['EMPA-REG OUTCOME', 'DECLARE-TIMI 58']
+                            },
+                            {
+                                title: 'Treatment Selection',
+                                description: 'Selected Empagliflozin 10mg OD based on renal function, patient tolerability, and robust evidence for CV protection in this population.',
+                                sources: ['RSSDI Guidelines 2024']
+                            }
+                        ]}
                         content={
                             <div className="clinical-logic-flow">
                                 <h4 style={{ fontSize: 'var(--text-xs)', fontWeight: '700', textTransform: 'uppercase', color: 'var(--grey-400)', marginBottom: 'var(--space-2)' }}>Clinical Reasoning Logic</h4>
