@@ -21,6 +21,7 @@ const ChatInput = memo(({ onSend }) => {
     const [uploadProgress, setUploadProgress] = useState({});
     const fileInputRef = useRef(null);
     const inputRef = useRef(null);
+    const dragCounter = useRef(0);
 
     const validateFile = (file) => {
         const fileType = file.type.split('/')[0];
@@ -81,22 +82,29 @@ const ChatInput = memo(({ onSend }) => {
     };
 
     // Drag and Drop Handlers
-    const handleDragOver = (e) => {
+    const handleDragEnter = (e) => {
         e.preventDefault();
         e.stopPropagation();
-        setIsDragging(true);
+        dragCounter.current += 1;
+        if (e.dataTransfer.items && e.dataTransfer.items.length > 0) {
+            setIsDragging(true);
+        }
     };
 
     const handleDragLeave = (e) => {
         e.preventDefault();
         e.stopPropagation();
-        setIsDragging(false);
+        dragCounter.current -= 1;
+        if (dragCounter.current === 0) {
+            setIsDragging(false);
+        }
     };
 
     const handleDrop = (e) => {
         e.preventDefault();
         e.stopPropagation();
         setIsDragging(false);
+        dragCounter.current = 0;
 
         const files = Array.from(e.dataTransfer.files);
         const validFiles = files.filter(validateFile);
@@ -137,7 +145,8 @@ const ChatInput = memo(({ onSend }) => {
         <div
             className="input-area"
             style={{ borderTop: '1px solid var(--grey-100)', background: 'white', position: 'relative' }}
-            onDragOver={handleDragOver}
+            onDragEnter={handleDragEnter}
+            onDragOver={(e) => e.preventDefault()}
             onDragLeave={handleDragLeave}
             onDrop={handleDrop}
         >
