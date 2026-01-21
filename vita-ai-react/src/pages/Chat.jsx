@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import ChatSidebar from '../components/ChatSidebar';
 import ChatMessage from '../components/ChatMessage';
 import ChatInput from '../components/ChatInput';
+import VoiceFirstInput from '../components/VoiceFirstInput';
 import ClinicalLogicGraph from '../components/ClinicalLogicGraph';
 
 const Chat = () => {
@@ -196,7 +197,11 @@ const Chat = () => {
                     />
                 </div>
 
-                <ChatInput onSend={(text) => console.log(text)} />
+                {/* Voice-First Input */}
+                <VoiceFirstInput
+                    onSend={(data) => console.log('Send:', data)}
+                    onVoiceQuery={(audioFile) => console.log('Voice query:', audioFile)}
+                />
             </main>
         </div>
     );

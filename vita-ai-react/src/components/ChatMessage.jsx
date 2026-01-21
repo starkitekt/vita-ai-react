@@ -1,6 +1,7 @@
 import React, { memo, useState } from 'react';
 import { motion } from 'framer-motion';
 import MediaDisplay from './MediaDisplay';
+import VoiceFeedback from './VoiceFeedback';
 import ImageLightbox from './ImageLightbox';
 
 const ChatMessage = memo(({ role, content, metrics, sources, thoughtProcess, attachments }) => {
@@ -244,6 +245,16 @@ const ChatMessage = memo(({ role, content, metrics, sources, thoughtProcess, att
                             >
                                 <span>👎</span> Outdated
                             </button>
+                        </div>
+                    )}
+
+                    {/* Voice Feedback - Read Aloud Controls */}
+                    {isAI && content && typeof content === 'string' && (
+                        <div style={{ marginTop: 'var(--space-3)' }}>
+                            <VoiceFeedback
+                                text={content}
+                                autoRead={false}
+                            />
                         </div>
                     )}
                 </div>

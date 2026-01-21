@@ -1,0 +1,229 @@
+/* ==========================================================================
+   VOICE-FIRST COMPONENTS - RESPONSIVE STYLES (UPDATED)
+   Professional desktop, touch-friendly mobile
+   ========================================================================== */
+
+/* Desktop: Professional Inline Bar (>= 1024px) */
+@media (min-width: 1024px) {
+  .voice-first-container {
+    border-top: 1px solid var(--grey-100);
+    padding: var(--space-4) var(--space-6);
+  }
+
+  .voice-input-bar {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--grey-50);
+    border: 1px solid var(--grey-200);
+    border-radius: var(--radius-lg);
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .voice-input-bar:focus-within {
+    border-color: var(--grey-400);
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.04);
+  }
+
+  .voice-button-desktop {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+  }
+
+  .voice-settings-desktop {
+    font-size: var(--text-xs);
+    color: var(--grey-500);
+  }
+}
+
+/* Chat Layout - Responsive */
+.chat-layout {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.chat-main {
+  flex: 1;
+  display: flex;
+  flexDirection: column;
+}
+
+/* Mobile: Hide sidebar by default, show overlay */
+@media (max-width: 1024px) {
+  .chat-sidebar {
+    position: fixed;
+    left: -100%;
+    top: 0;
+    height: 100vh;
+    transition: left 0.3s ease;
+    z-index: 1000;
+  }
+
+  .chat-sidebar.open {
+    left: 0;
+  }
+
+  .chat-main {
+    width: 100%;
+  }
+
+  /* Status bar - Compact on tablets */
+  .status-bar {
+    padding: var(--space-2) var(--space-4) !important;
+  }
+
+  .mode-badge {
+    font-size: var(--text-2xs) !important;
+  }
+}
+
+@media (max-width: 768px) {
+
+  /* Messages - Full width with less padding */
+  .messages-container {
+    padding: var(--space-4) var(--space-3) !important;
+  }
+
+  .message {
+    padding: 0 var(--space-2) !important;
+  }
+
+  .message-content {
+    padding: var(--space-4) !important;
+    font-size: var(--text-sm) !important;
+  }
+
+  /* Voice feedback - Smaller on mobile */
+  .voice-feedback-controls {
+    transform: scale(0.9);
+  }
+
+  /* Hide action toolbar on small screens */
+  .action-toolbar {
+    display: none !important;
+  }
+
+  /* Status bar - Mobile minimal */
+  .status-right {
+    gap: var(--space-2) !important;
+  }
+}
+
+/* Landscape mobile - Adjust button size */
+@media (max-width: 768px) and (orientation: landscape) {
+  .voice-first-button {
+    max-width: 160px;
+  }
+
+  .chat-main {
+    height: 100svh;
+    /* Use small viewport height for mobile browsers */
+  }
+}
+
+/* Touch-friendly targets */
+@media (hover: none) and (pointer: coarse) {
+
+  /* Increase touch targets for mobile */
+  .btn-icon {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .voice-first-button {
+    /* Already large enough */
+    min-width: 180px;
+    min-height: 180px;
+  }
+
+  /* Better spacing for fat fingers */
+  .voice-settings {
+    gap: var(--space-3);
+  }
+}
+
+/* Very small screens (< 360px) */
+@media (max-width: 360px) {
+  .voice-first-input-container {
+    padding: var(--space-3);
+  }
+
+  .voice-first-button {
+    max-width: 160px;
+  }
+
+  .message-content {
+    font-size: 0.8125rem !important;
+    /* 13px */
+    padding: var(--space-3) !important;
+  }
+
+  .hero-title {
+    font-size: var(--text-3xl) !important;
+  }
+}
+
+/* Tablet (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .voice-first-button {
+    max-width: 240px;
+  }
+
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* Desktop (> 1024px) - Optimal experience */
+@media (min-width: 1024px) {
+  .voice-first-button {
+    max-width: 280px;
+  }
+
+  .chat-sidebar {
+    /* Sidebar always visible */
+    position: relative;
+  }
+}
+
+/* High DPI screens - Crisper graphics */
+@media (-webkit-min-device-pixel-ratio: 2),
+(min-resolution: 192dpi) {
+  .voice-first-button {
+    /* Better rendering on retina */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Print styles - Hide voice controls */
+@media print {
+
+  .voice-first-input-container,
+  .voice-feedback-controls,
+  .voice-settings {
+    display: none;
+  }
+}
+
+/* Reduced motion - Respect user preferences */
+@media (prefers-reduced-motion: reduce) {
+  .voice-first-button {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .sound-bars {
+    animation: none !important;
+  }
+}
+
+/* Dark mode support (future enhancement) */
+@media (prefers-color-scheme: dark) {
+
+  /* Placeholder for dark mode voice components */
+  .voice-first-button {
+    /* Keep bright for visibility in dark environments (hospitals) */
+  }
+}
